@@ -18,7 +18,6 @@ package me.banes.chris.tivi.appinitializers
 
 import android.app.Application
 import com.evernote.android.job.JobManager
-import me.banes.chris.tivi.jobs.AddShowToMyShows
 import me.banes.chris.tivi.jobs.TiviJobCreator
 import javax.inject.Inject
 

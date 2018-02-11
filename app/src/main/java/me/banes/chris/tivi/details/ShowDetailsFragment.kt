@@ -91,7 +91,8 @@ class ShowDetailsFragment : TiviFragment() {
 
             setOnMenuItemClickListener {
                 when (it.itemId) {
-                    R.id.details_menu_add_show_myshows -> viewModel.addShowToMyShows()
+                    R.id.details_menu_add_myshows -> viewModel.addToMyShows()
+                    R.id.details_menu_remove_myshows -> viewModel.removeFromMyShows()
                     else -> TODO()
                 }
                 true
@@ -142,6 +143,11 @@ class ShowDetailsFragment : TiviFragment() {
                         .load(imageProvider.getPosterUrl(path, details_poster.width))
                         .into(details_poster)
             }
+        }
+
+        details_toolbar.menu.let {
+            it.findItem(R.id.details_menu_add_myshows)?.isVisible = !viewState.inMyShows
+            it.findItem(R.id.details_menu_remove_myshows)?.isVisible = viewState.inMyShows
         }
 
         details_rv.buildModelsWith { controller ->
